@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Tidy Edit — Amazon finds for small spaces</title>
+
+<!--
+  ============================================================
+  HOW TO EDIT THIS PAGE — read this before publishing
+  ============================================================
+  1. BRAND NAME: search for "THE TIDY EDIT" and "The Tidy Edit"
+     and replace with your own name/handle if you want.
+
+  2. SOCIAL LINKS: find the <nav class="social-tabs"> block below
+     and replace each href="#" with your real profile URLs
+     (Pinterest, Instagram, YouTube, Facebook).
+
+  3. PRODUCTS: each product is one <a class="product"> block.
+     - Replace href="https://www.amazon.de/dp/REPLACE-ASIN?tag=YOUR-TAG-21"
+       with your real Amazon link. Keep "?tag=YOUR-AFFILIATE-TAG" at the
+       end — that's what makes it an affiliate link and is what gets
+       you paid. Your tag looks like "yourname-21".
+     - Replace the product name, pitch line, and price.
+     - There are 4 categories (drawers): Kitchen, Closet, Entryway, Desk.
+       Add or remove <a class="product"> blocks freely — the layout
+       handles any number of them.
+     - Add or remove whole <section class="drawer"> blocks to add
+       new categories.
+
+  4. DISCLOSURE: do not remove the "As an Amazon Associate..." lines.
+     This is required by Amazon's Operating Agreement and by FTC
+     disclosure rules — keep it visible, not buried.
+
+  5. HOSTING: this is a single self-contained file. You can host it
+     for free on GitHub Pages, Netlify, or Cloudflare Pages, then put
+     that URL in your Instagram/TikTok/Pinterest bio link slot.
+  ============================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --paper:#F5F2EA;
+    --ink:#232220;
+    --ink-soft:#6b6858;
+    --line:#dad4c4;
+    --tape-clay:#B5654A;
+    --tape-sage:#6B7A5E;
+    --tape-denim:#4C6B82;
+    --tape-mustard:#C99A3E;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+
+  body{
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  .page{
+    max-width:560px;
+    margin:0 auto;
+    padding:48px 20px 64px;
+  }
+
+  .label-font{
+    font-family:'Space Mono', monospace;
+    text-transform:uppercase;
+    letter-spacing:0.06em;
+  }
+
+  /* ---------- hero ---------- */
+
+  .hero{
+    text-align:center;
+    margin-bottom:32px;
+  }
+
+  .tape-strip{
+    display:inline-block;
+    background:var(--ink);
+    color:var(--paper);
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    font-size:20px;
+    letter-spacing:0.08em;
+    padding:10px 22px;
+    transform:rotate(-1.2deg);
+    box-shadow:0 3px 0 rgba(35,34,32,0.15);
+  }
+
+  .tagline{
+    margin-top:18px;
+    font-size:15px;
+    color:var(--ink-soft);
+    line-height:1.5;
+  }
+
+  .disclosure{
+    margin-top:10px;
+    font-size:11px;
+    color:var(--ink-soft);
+    font-family:'Space Mono', monospace;
+    letter-spacing:0.02em;
+  }
+
+  /* ---------- social tabs ---------- */
+
+  .social-tabs{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-bottom:40px;
+  }
+
+  .tab{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:9px 16px;
+    font-size:13px;
+    font-weight:500;
+    color:var(--ink);
+    text-decoration:none;
+    transition:transform 0.15s ease, box-shadow 0.15s ease;
+  }
+
+  .tab:hover{
+    transform:translateY(-2px);
+    box-shadow:0 4px 10px rgba(35,34,32,0.08);
+  }
+
+  .tab-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    flex-shrink:0;
+  }
+
+  .tab-dot.clay{ background:var(--tape-clay); }
+  .tab-dot.sage{ background:var(--tape-sage); }
+  .tab-dot.denim{ background:var(--tape-denim); }
+  .tab-dot.mustard{ background:var(--tape-mustard); }
+
+  /* ---------- drawers ---------- */
+
+  .drawers{
+    display:flex;
+    flex-direction:column;
+    gap:36px;
+  }
+
+  .drawer{
+    position:relative;
+    background:#fff;
+    border:1px solid var(--line);
+    border-radius:10px;
+    padding:28px 18px 10px;
+  }
+
+  .tape-tab{
+    position:absolute;
+    top:-14px;
+    left:18px;
+    font-family:'Space Mono', monospace;
+    font-weight:700;
+    font-size:12px;
+    letter-spacing:0.08em;
+    padding:6px 14px;
+    border-radius:3px;
+    transform:rotate(-2deg);
+    box-shadow:0 2px 4px rgba(35,34,32,0.15);
+  }
+
+  .drawer.clay .tape-tab{ background:var(--tape-clay); color:#fff; }
+  .drawer.sage .tape-tab{ background:var(--tape-sage); color:#fff; }
+  .drawer.denim .tape-tab{ background:var(--tape-denim); color:#fff; }
+  .drawer.mustard .tape-tab{ background:var(--tape-mustard); color:var(--ink); }
+
+  .products{
+    display:flex;
+    flex-direction:column;
+  }
+
+  .product{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:14px 6px;
+    text-decoration:none;
+    color:var(--ink);
+    border-bottom:1px solid var(--line);
+    transition:transform 0.15s ease, background 0.15s ease;
+  }
+
+  .products .product:last-child{
+    border-bottom:none;
+  }
+
+  .product:hover{
+    transform:translateX(2px);
+    background:#FBFAF6;
+  }
+
+  .swatch{
+    width:42px;
+    height:42px;
+    border-radius:8px;
+    flex-shrink:0;
+  }
+
+  .drawer.clay .swatch{ background:#EFD9D0; }
+  .drawer.sage .swatch{ background:#DEE3D8; }
+  .drawer.denim .swatch{ background:#D9E1E7; }
+  .drawer.mustard .swatch{ background:#F2E4C6; }
+
+  .info{
+    flex:1;
+    min-width:0;
+  }
+
+  .name{
+    display:block;
+    font-size:14px;
+    font-weight:600;
+  }
+
+  .pitch{
+    display:block;
+    font-size:12.5px;
+    color:var(--ink-soft);
+    margin-top:2px;
+    line-height:1.4;
+  }
+
+  .meta{
+    display:flex;
+    flex-direction:column;
+    align-items:flex-end;
+    flex-shrink:0;
+    gap:3px;
+  }
+
+  .price{
+    font-size:12px;
+    font-family:'Space Mono', monospace;
+    color:var(--ink-soft);
+  }
+
+  .cta{
+    font-family:'Space Mono', monospace;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:0.04em;
+    color:var(--ink);
+  }
+
+  /* ---------- footer ---------- */
+
+  footer{
+    margin-top:48px;
+    text-align:center;
+  }
+
+  footer p{
+    font-size:12px;
+    color:var(--ink-soft);
+    line-height:1.6;
+  }
+
+  footer .disclosure-full{
+    font-family:'Space Mono', monospace;
+    font-size:10.5px;
+    margin-top:8px;
+    letter-spacing:0.01em;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .tab, .product{ transition:none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="hero">
+    <div class="tape-strip">the tidy edit</div>
+    <p class="tagline">Amazon finds for small spaces — tested<br>before they're tagged.</p>
+    <p class="disclosure">As an Amazon Associate I earn from qualifying purchases.</p>
+  </header>
+
+  <nav class="social-tabs">
+    <a class="tab" href="#" target="_blank" rel="noopener">
+      <span class="tab-dot clay"></span> Pinterest
+    </a>
+    <a class="tab" href="#" target="_blank" rel="noopener">
+      <span class="tab-dot sage"></span> Instagram
+    </a>
+    <a class="tab" href="#" target="_blank" rel="noopener">
+      <span class="tab-dot denim"></span> YouTube
+    </a>
+    <a class="tab" href="#" target="_blank" rel="noopener">
+      <span class="tab-dot mustard"></span> Facebook
+    </a>
+  </nav>
+
+  <main class="drawers">
+
+    <!-- KITCHEN -->
+    <section class="drawer clay">
+      <div class="tape-tab">kitchen</div>
+      <div class="products">
+        <a class="product" href="https://www.amazon.de/dp/REPLACE-ASIN-1?tag=YOUR-TAG-21" target="_blank" rel="noopener sponsored">
+          <span class="swatch"></span>
+          <span class="info">
+            <span class="name">Stackable clear bins</span>
+            <span class="pitch">Fridge &amp; pantry — see everything at a glance</span>
+          </span>
+          <span class="meta">
+            <span class="price">~€19</span>
+            <span class="cta">shop →</span>
+          </span>
+        </a>
+        <a class="product" href="https://www.amazon.de/dp/REPLACE-ASIN-2?tag=YOUR-TAG-21" target="_blank" rel="noopener sponsored">
+          <span class="swatch"></span>
+          <span class="info">
+            <span class="name">Expandable drawer dividers</span>
+            <span class="pitch">Cutlery, gadgets, and junk drawer chaos — solved</span>
+          </span>
+          <span class="meta">
+            <span class="price">~€14</span>
+            <span class="cta">shop →</span>
+          </span>
+        </a>
+        <a class="product" href="https://www.amazon.de/dp/REPLACE-ASIN-3?tag=YOUR-TAG-21" target="_blank" rel="noopener sponsored">
+          <span class="swatch"></span>
+          <span class="info">
+            <span class="name">Lazy susan turntable</span>
+            <span class="pitch">For the cabinet corner you've given up on</span>
+          </span>
+          <span class="meta">
+            <span class="price">~€16</span>
+            <span class="cta">shop →</span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- CLOSET -->
+    <section class="drawer sage">
+      <div class="tape-tab">closet</div>
+      <div class="products">
+        <a class="product" href="https://www.amazon.de/dp/REPLACE-ASIN-4?tag=YOUR-TAG-21" target="_blank" rel="noopener sponsored">
+          <span class="swatch"></span>
+          <span class="info">
+            <span class="name">Velvet slim hangers (set of 20)</span>
+            <span class="pitch">Doubles your hanging space instantly</span>
+          </span>
+          <span class="meta">
+            <span class="price">~€22</span>
+            <span class="cta">shop →</span>
+          </span>
+        </a>
+        <a class="product" href="https://www.amazon.de/dp/REPLACE-ASIN-5?tag=YOUR-TAG-21" target="_blank" rel="noopener sponsored">
+          <span class="swatch"></span>
+          <span class="info">
+            <span class="name">Stackable shoe organizer</span>
+            <span class="pitch">Closet floor, reclaimed</span>
+          </span>
+          <span class="meta">
+            <span class="price">~€24</span>
+            <span class="cta">shop →</span>
+          </span>
+        </a>
+        <a class="product" href="https://www.amazon.de/dp/REPLACE-ASIN-6?tag=YOUR-TAG-21" target="_blank" rel="noopener sponsored">
+          <span class="swatch"></span>
+          <span class="info">
+            <span class="name">Vacuum storage bags</span>
+            <span class="pitch">Off-season clothes, shrunk to nothing</span>
+          </span>
+          <span class="meta">
+            <span class="price">~€13</span>
+            <span class="cta">shop →</span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ENTRYWAY -->
+    <section class="drawer denim">
+      <div class="tape-tab">entryway</div>
+      <div class="products">
+        <a class="product" href="https://www.amazon.de/dp/REPLACE-ASIN-7?tag=YOUR-TAG-21" target="_blank" rel="noopener sponsored">
+          <span class="swatch"></span>
+          <span class="info">
+            <span class="name">Over-the-door hook rack</span>
+            <span class="pitch">No drilling, holds coats &amp; bags</span>
+          </span>
+          <span class="meta">
+            <span class="price">~€15</span>
+            <span class="cta">shop →</span>
+          </span>
+        </a>
+        <a class="product" href="https://www.amazon.de/dp/REPLACE-ASIN-8?tag=YOUR-TAG-21" target="_blank" rel="noopener sponsored">
+          <span class="swatch"></span>
+          <span class="info">
+            <span class="name">Slim shoe bench with storage</span>
+            <span class="pitch">Sit, store, and stop tripping on sneakers</span>
+          </span>
+          <span class="meta">
+            <span class="price">~€59</span>
+            <span class="cta">shop →</span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+    <!-- DESK -->
+    <section class="drawer mustard">
+      <div class="tape-tab">desk</div>
+      <div class="products">
+        <a class="product" href="https://www.amazon.de/dp/REPLACE-ASIN-9?tag=YOUR-TAG-21" target="_blank" rel="noopener sponsored">
+          <span class="swatch"></span>
+          <span class="info">
+            <span class="name">Cord &amp; cable organizer box</span>
+            <span class="pitch">Hide the power-strip nest for good</span>
+          </span>
+          <span class="meta">
+            <span class="price">~€12</span>
+            <span class="cta">shop →</span>
+          </span>
+        </a>
+        <a class="product" href="https://www.amazon.de/dp/REPLACE-ASIN-10?tag=YOUR-TAG-21" target="_blank" rel="noopener sponsored">
+          <span class="swatch"></span>
+          <span class="info">
+            <span class="name">Acrylic desk organizer tray</span>
+            <span class="pitch">One spot for everything that floats around</span>
+          </span>
+          <span class="meta">
+            <span class="price">~€18</span>
+            <span class="cta">shop →</span>
+          </span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <p>New finds added weekly — check back often.</p>
+    <p class="disclosure-full">As an Amazon Associate I earn from qualifying purchases.</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
